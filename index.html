@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khai's Routine</title>
+    <script>
+        // Register Service Worker for PWA support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
     
     <!-- React & ReactDOM (Loaded from CDN) -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -180,7 +197,7 @@
                 ],
                 afternoon: [
                     { id: 'a1', text: 'Zohor Prayer', completed: false, subtext: "Don't delay", type: 'prayer' },
-                    { id: 'a2', text: 'Check in w/ Alia', completed: false, subtext: "Ask: How are you feeling?", type: 'heart-sm' },
+                    { id: 'a2', text: 'Text Alia', completed: false, subtext: "Ask: How are you feeling?", type: 'heart-sm' },
                     { id: 'a3', text: 'Flexible Time (Anime, Games, Light Work)', completed: false, type: 'chill' },
                 ],
                 evening: [
@@ -210,7 +227,7 @@
                 ],
                 afternoon: [
                     { id: 'l2_a1', text: 'Zohor @ Mosque', completed: false, subtext: "Go out, don't stay in", type: 'mosque' },
-                    { id: 'l2_a2', text: 'Check in w/ Alia', completed: false, subtext: "Ask: How are you doing?", type: 'heart-sm' },
+                    { id: 'l2_a2', text: 'Text Alia', completed: false, subtext: "Ask: How are you doing?", type: 'heart-sm' },
                     { id: 'l2_a3', text: 'Chores & Maintenance', completed: false, subtext: "Laundry, cleaning, etc.", type: 'home' },
                     { id: 'l2_a4', text: 'Afternoon Work Block', completed: false, type: 'work' },
                 ],
@@ -241,7 +258,7 @@
                 ],
                 afternoon: [
                     { id: 'l3_a1', text: 'Zohor @ MOSQUE', completed: false, type: 'mosque' },
-                    { id: 'l3_a2', text: 'Check in w/ Alia', completed: false, subtext: "Quick check: How is she?", type: 'heart-sm' },
+                    { id: 'l3_a2', text: 'Text Alia', completed: false, subtext: "Quick check: How is she?", type: 'heart-sm' },
                     { id: 'l3_a3', text: 'Chores & Maintenance', completed: false, type: 'home' },
                     { id: 'l3_a4', text: 'Afternoon Work Block', completed: false, type: 'work' },
                 ],
@@ -426,19 +443,6 @@
         root.render(e(RoutineApp));
     </script>
 
-    <script>
-        // Register Service Worker for PWA support
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./service-worker.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful');
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-            });
-        }
-    </script>
+    
 </body>
 </html>
