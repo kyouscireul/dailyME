@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Khai's Routine</title>
     
     <!-- PWA Settings -->
@@ -192,11 +192,7 @@
             const progress = calculateProgress();
 
             return e('div', { className: "min-h-screen font-sans pb-24" },
-                e('div', { 
-                    className: "bg-white shadow-sm sticky top-0 z-10",
-                    // ADD THIS LINE:
-                    style: { paddingTop: "calc(env(safe-area-inset-top) + 20px)" } 
-                },
+                e('div', { className: "bg-white shadow-sm sticky top-0 z-10" },
                     e('div', { className: "max-w-md mx-auto px-4 pt-4 pb-2" },
                         e('div', { className: "flex justify-between items-center mb-4" },
                             e('div', null,
