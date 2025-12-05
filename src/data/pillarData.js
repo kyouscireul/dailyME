@@ -35,7 +35,8 @@ export const pillarData = {
         title: "Financial",
         description: "Savings, income, and budget management.",
         color: "bg-emerald-50 text-emerald-700",
-        icon: "DollarSign"
+        icon: "DollarSign",
+        widget: "financeTracker"
     },
     spiritual: {
         title: "Spiritual",

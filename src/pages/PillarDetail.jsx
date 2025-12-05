@@ -4,6 +4,7 @@ import { ArrowLeft, Target, Eye, Flame, Dumbbell, BookOpen, DollarSign, Moon, He
 import { pillarData } from '../data/pillarData';
 import FocusQueue from '../components/pillars/FocusQueue';
 import AcademicTracker from '../components/pillars/AcademicTracker';
+import FinanceTracker from '../components/pillars/FinanceTracker';
 
 const iconMap = {
     Target, Eye, Flame, Dumbbell, BookOpen, DollarSign, Moon, Heart
@@ -35,6 +36,7 @@ const PillarDetail = () => {
 
                 {pillar.widget === 'focusQueue' && <FocusQueue />}
                 {pillar.widget === 'academicTracker' && <AcademicTracker />}
+                {pillar.widget === 'financeTracker' && <FinanceTracker />}
 
                 <div className="mt-8 border-t border-slate-100 pt-8 text-center">
                     <div className="inline-block bg-slate-50 rounded-xl p-4 border border-slate-100">
