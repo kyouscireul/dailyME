@@ -3,7 +3,8 @@ export const pillarData = {
         title: "Focus",
         description: "Deep work, concentration, and flow state.",
         color: "bg-indigo-50 text-indigo-700",
-        icon: "Target"
+        icon: "Target",
+        widget: "focusQueue"
     },
     clarity: {
         title: "Clarity",
