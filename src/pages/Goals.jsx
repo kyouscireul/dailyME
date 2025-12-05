@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Layers } from 'lucide-react';
 import GoalCard from '../components/GoalCard';
 import SkillSlider from '../components/SkillSlider';
@@ -60,13 +61,13 @@ const Goals = () => {
             <div className="max-w-md mx-auto px-4 py-4 space-y-6">
                 <div className="grid grid-cols-2 gap-2">
                     {pillars.map(pillar => (
-                        <a
+                        <Link
                             key={pillar.id}
-                            href={`/legacy/${pillar.file}`}
+                            to={`/pillar/${pillar.id}`}
                             className="bg-white border border-slate-200 rounded-lg p-3 text-center text-sm font-bold text-slate-600 shadow-sm hover:border-indigo-300 hover:text-indigo-600 transition-colors block"
                         >
                             {pillar.label}
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
