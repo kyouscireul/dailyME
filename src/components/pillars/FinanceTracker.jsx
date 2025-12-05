@@ -76,47 +76,47 @@ const FinanceTracker = () => {
     return (
         <div className="mt-6 space-y-5">
             {/* Top Dashboard */}
-            <div className={`rounded-3xl p-5 text-white shadow-lg transition-all duration-500 relative overflow-hidden
+            <div className={`rounded-3xl p-5 text-white shadow-lg transition-all duration-500 relative overflow-hidden flex flex-col justify-between
                 ${isBroke ? 'bg-gradient-to-br from-red-600 to-rose-700 shadow-red-200'
                     : isDanger ? 'bg-gradient-to-br from-amber-500 to-orange-600 shadow-orange-200'
-                        : 'bg-gradient-to-br from-emerald-500 to-teal-600 shadow-emerald-200'}`}>
+                        : 'bg-gradient-to-br from-emerald-500 to-teal-600 shadow-emerald-200'}`} style={{ minHeight: '160px' }}>
 
-                {/* Total Savings Header */}
-                <div className="flex items-center gap-2 mb-4 opacity-90">
+                {/* Header: Total Savings */}
+                <div className="flex items-center gap-2 opacity-90">
                     <div className="p-1.5 bg-white/20 rounded-lg backdrop-blur-sm">
-                        <Wallet size={14} className="text-white" />
+                        <Wallet size={12} className="text-white" />
                     </div>
                     <div>
-                        <p className="text-[10px] font-bold uppercase tracking-wider opacity-80 leading-none mb-0.5">Total Savings</p>
-                        <p className="text-sm font-black tracking-wide leading-none">RM {state.totalSavings.toFixed(2)}</p>
+                        <p className="text-[9px] font-bold uppercase tracking-wider opacity-80 leading-none mb-0.5">Total Savings</p>
+                        <p className="text-xs font-black tracking-wide leading-none">RM {state.totalSavings.toFixed(2)}</p>
                     </div>
                     <button
                         onClick={() => setShowSettings(!showSettings)}
                         className="ml-auto text-white/80 hover:text-white hover:bg-white/20 p-1.5 rounded-lg transition-all"
                     >
-                        <Settings size={16} />
+                        <Settings size={14} />
                     </button>
                 </div>
 
-                {/* Main Balance Display */}
-                <div>
-                    <span className="text-emerald-100 text-[10px] font-bold uppercase tracking-wider block mb-1">Available / Target</span>
+                {/* Main Balance Display - Centered vertically in available space */}
+                <div className="flex-1 flex flex-col justify-center py-2">
+                    <span className="text-emerald-100 text-[9px] font-bold uppercase tracking-wider block mb-1.5 opacity-90">Available / Target</span>
                     <div className="flex items-baseline gap-1">
-                        <span className="text-xl font-medium opacity-80">RM</span>
-                        <h1 className="text-5xl font-black tracking-tighter">{remaining.toFixed(0)}</h1>
-                        <span className="text-2xl font-medium opacity-60">/ {saveTarget}</span>
+                        <span className="text-lg font-medium opacity-80">RM</span>
+                        <h1 className="text-4xl font-black tracking-tight">{remaining.toFixed(0)}</h1>
+                        <span className="text-xl font-medium opacity-60">/ {saveTarget}</span>
                     </div>
                 </div>
 
-                {/* Status Bar */}
-                <div className="mt-4 flex items-center gap-3">
+                {/* Status Bar - Bottom Anchor */}
+                <div className="mt-auto flex items-center gap-3">
                     <div className="flex-1 h-1.5 bg-black/20 rounded-full overflow-hidden">
                         <div
                             className="h-full bg-white/90 rounded-full transition-all duration-500"
                             style={{ width: `${progress}%` }}
                         />
                     </div>
-                    <span className="text-xs font-bold text-white/90 whitespace-nowrap">{Math.round(progress)}% Spent</span>
+                    <span className="text-[10px] font-bold text-white/90 whitespace-nowrap">{Math.round(progress)}% Spent</span>
                 </div>
             </div>
 
@@ -192,9 +192,9 @@ const FinanceTracker = () => {
                     <button
                         onClick={() => addExpense(spendingAmount)}
                         disabled={!spendingAmount}
-                        className="bg-slate-800 text-white px-5 rounded-xl font-bold text-sm shadow-lg shadow-slate-200 hover:bg-slate-700 active:scale-95 disabled:opacity-50 disabled:scale-100 transition-all"
+                        className="bg-slate-800 text-white px-5 rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg shadow-slate-200 hover:bg-slate-700 active:scale-95 disabled:opacity-50 disabled:scale-100 transition-all border-b-4 border-slate-900 active:border-b-0 active:translate-y-1"
                     >
-                        SPEND
+                        Spend
                     </button>
                 </div>
             </div>
@@ -225,7 +225,7 @@ const FinanceTracker = () => {
                     {state.expenses.length === 0 ? (
                         <p className="text-center text-slate-300 text-xs py-2 italic">No spending yet this week.</p>
                     ) : (
-                        state.expenses.slice(0, 3).map(expense => (
+                        state.expenses.slice(0, 5).map(expense => (
                             <div key={expense.id} className="flex items-center justify-between p-2.5 bg-white border border-slate-100 rounded-lg shadow-sm animate-in fade-in slide-in-from-top-1">
                                 <div className="flex items-center gap-2.5">
                                     <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center text-red-500">
