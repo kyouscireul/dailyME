@@ -17,6 +17,7 @@ const FinanceTracker = () => {
 
     const [spendingAmount, setSpendingAmount] = useState('');
     const [spendingRemark, setSpendingRemark] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
     const [showSettings, setShowSettings] = useState(false);
 
     // Persistence
@@ -84,13 +85,13 @@ const FinanceTracker = () => {
                     : isDanger ? 'bg-gradient-to-br from-amber-500 to-orange-600 shadow-orange-200'
                         : 'bg-gradient-to-br from-emerald-500 to-teal-600 shadow-emerald-200'}`} style={{ minHeight: '160px' }}>
 
-                {/* Header: Total Savings */}
+                {/* Header: Current Balance */}
                 <div className="flex items-center gap-2 opacity-90">
                     <div className="p-1.5 bg-white/20 rounded-lg backdrop-blur-sm">
                         <Wallet size={12} className="text-white" />
                     </div>
                     <div>
-                        <p className="text-[9px] font-bold uppercase tracking-wider opacity-80 leading-none mb-0.5">Total Savings</p>
+                        <p className="text-[9px] font-bold uppercase tracking-wider opacity-80 leading-none mb-0.5">Current Balance</p>
                         <p className="text-xs font-black tracking-wide leading-none">RM {state.totalSavings.toFixed(2)}</p>
                     </div>
                     <button
@@ -147,7 +148,7 @@ const FinanceTracker = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-[10px] font-bold text-slate-400 mb-1">Total Savings</label>
+                            <label className="block text-[10px] font-bold text-slate-400 mb-1">Balance</label>
                             <input
                                 type="number"
                                 value={state.totalSavings}
@@ -168,13 +169,12 @@ const FinanceTracker = () => {
 
                 {/* Remark Input */}
                 <div>
-                    <label className="block text-[10px] font-bold text-slate-400 mb-1 uppercase tracking-wider">Remark</label>
                     <input
                         type="text"
                         value={spendingRemark}
                         onChange={(e) => setSpendingRemark(e.target.value)}
-                        placeholder="What is this for?"
-                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 placeholder:text-slate-300"
+                        placeholder="Spending Remark"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-2 text-xs font-medium text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 placeholder:text-slate-300"
                     />
                 </div>
 
@@ -241,11 +241,11 @@ const FinanceTracker = () => {
                     </div>
                 </div>
 
-                <div className="space-y-1.5">
+                <div className="space-y-1.5 min-h-[320px]">
                     {state.expenses.length === 0 ? (
-                        <p className="text-center text-slate-300 text-xs py-2 italic">No spending yet this week.</p>
+                        <p className="text-center text-slate-300 text-xs py-10 italic">No spending yet this week.</p>
                     ) : (
-                        state.expenses.slice(0, 50).map(expense => (
+                        state.expenses.slice((currentPage - 1) * 5, currentPage * 5).map(expense => (
                             <div key={expense.id} className="flex items-center justify-between p-2.5 bg-white border border-slate-100 rounded-lg shadow-sm animate-in fade-in slide-in-from-top-1">
                                 <div className="flex items-center gap-3">
                                     <div className="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-500 shrink-0">
@@ -263,6 +263,28 @@ const FinanceTracker = () => {
                         ))
                     )}
                 </div>
+
+                {state.expenses.length > 5 && (
+                    <div className="flex justify-center gap-2 mt-4">
+                        <button
+                            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                            disabled={currentPage === 1}
+                            className="px-3 py-1 rounded-lg bg-slate-100 text-slate-500 text-xs font-bold disabled:opacity-50"
+                        >
+                            Prev
+                        </button>
+                        <span className="text-xs font-bold text-slate-400 py-1">
+                            Page {currentPage} of {Math.ceil(state.expenses.length / 5)}
+                        </span>
+                        <button
+                            onClick={() => setCurrentPage(p => Math.min(Math.ceil(state.expenses.length / 5), p + 1))}
+                            disabled={currentPage >= Math.ceil(state.expenses.length / 5)}
+                            className="px-3 py-1 rounded-lg bg-slate-100 text-slate-500 text-xs font-bold disabled:opacity-50"
+                        >
+                            Next
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
     );
