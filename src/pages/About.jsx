@@ -24,16 +24,16 @@ const About = () => {
                     <p className="text-white/90 text-sm leading-relaxed mb-4">
                         This application is a labor of love. It is only possible because I've decided to open source the entire codebase on GitHub, making it accessible for everyone to learn from and use.
                     </p>
-                    <div className="flex items-center gap-2 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg w-fit backdrop-blur-sm">
+                    <a href="https://github.com/kyouscireul/dailyME" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-bold bg-white/20 px-3 py-1.5 rounded-lg w-fit backdrop-blur-sm hover:bg-white/30 transition-colors cursor-pointer">
                         <Github size={14} /> Open Source Project
-                    </div>
+                    </a>
                 </div>
 
                 {/* Connect Section */}
                 <div className="space-y-3">
                     <h3 className="font-bold text-slate-400 text-xs uppercase tracking-wider ml-1">Connect & Feedback</h3>
 
-                    <a href="https://www.threads.net/@krlmrkrnm" target="_blank" rel="noopener noreferrer"
+                    <a href="https://www.threads.com/@krlmrkrnm" target="_blank" rel="noopener noreferrer"
                         className="flex items-center gap-4 bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:border-slate-300 transition-all active:scale-[0.98]">
                         <div className="bg-black text-white p-2.5 rounded-full">
                             <span className="font-bold text-lg">@</span>
@@ -67,8 +67,8 @@ const About = () => {
                     <p className="text-slate-600 text-sm mb-4">
                         The app is 100% free. However, if you find it useful, please consider leaving a tip. Even as small as <span className="font-black text-amber-600">RM 1</span> helps me keep going!
                     </p>
-                    <button className="w-full bg-amber-100 text-amber-700 font-bold py-3 rounded-xl hover:bg-amber-200 transition-colors flex items-center justify-center gap-2">
-                        Tip
+                    <button disabled className="w-full bg-slate-100 text-slate-400 font-bold py-3 rounded-xl flex items-center justify-center gap-2 cursor-not-allowed">
+                        Disabled
                     </button>
                     {/* Placeholder for actual payment link if provided later */}
                 </div>
@@ -87,7 +87,7 @@ const About = () => {
                             I am a student developer looking for funds to support my education. If you need a web application built with modern tech (React, Vite, etc.), hire me!
                         </p>
                         <div className="flex gap-2">
-                            <a href="https://www.threads.net/@krlmrkrnm" target="_blank" rel="noopener noreferrer"
+                            <a href="https://www.threads.com/@krlmrkrnm" target="_blank" rel="noopener noreferrer"
                                 className="flex-1 bg-white text-slate-900 font-bold py-2.5 rounded-lg text-center text-sm hover:bg-slate-100 transition-colors">
                                 Contact Me
                             </a>

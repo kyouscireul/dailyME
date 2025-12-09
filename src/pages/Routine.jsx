@@ -7,7 +7,7 @@ import { defaultRoutines } from '../data/routineData';
 const Routine = () => {
     const [level, setLevel] = useState(2);
     const [isEditing, setIsEditing] = useState(false);
-    const [userName, setUserName] = useState(() => localStorage.getItem('khai_userName') || 'Entrepreneur');
+    const [userName, setUserName] = useState(() => localStorage.getItem('khai_userName') || 'Your Name');
     const [levelData, setLevelData] = useState(() => {
         const saved = localStorage.getItem('khai_level_data');
         return saved ? JSON.parse(saved) : {
