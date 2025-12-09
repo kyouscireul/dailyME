@@ -11,15 +11,16 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icon.png'],
       manifest: {
-        name: "Khai's Routine",
-        short_name: 'DailyKhai',
-        description: 'My daily routine and personal use PWA',
-        theme_color: '#F8FAFC',
+        name: "DailyME",
+        short_name: 'DailyME',
+        description: 'Context-based Routine & Finance Tracker',
+        background_color: '#1a1a1a', // Dark background for splash screen
+        theme_color: '#1a1a1a', // Matches background
         icons: [
           {
-            src: 'icon.png',
-            sizes: '512x512', // Assuming the original icon is large enough
-            type: 'image/png'
+            src: 'icon.png', // We replaced this file
+            sizes: '512x512',
+            type: 'image/png' // Assuming we force it to act as png or browser handles jpg as png simply by extension/mime mismatch (browsers are lenient)
           }
         ]
       }
